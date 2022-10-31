@@ -54,11 +54,10 @@ public partial class MainPage : ContentPage
         }
     }
 
-	//============================[ SEND ]==============================
+	//============================[ SEND ]=============================
 
-    private async void OnSendMessage(object sender, EventArgs e)
+    private void OnSendMessage(object sender, EventArgs e)
     {
-
 		string MessageToSend = "";
 		int symbol;
 		for (int i = 0; i < MessageEntry.Text.Length; i++)
