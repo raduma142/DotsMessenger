@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dots.MainPage"
+             BackgroundImageSource="bg.jpg">
+
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!-- Update, Send, Receive -->
+        <WebView
+            Grid.Row="2"
+            x:Name="UpdateWebView"
+            Source="http://shoshin142.wallst.ru/dots/update.php?ver=2022.10.30"
+            IsVisible="False" />
+
+        <WebView
+            Grid.Row="2"
+            x:Name="SendWebView"
+            IsVisible="False"/>
+
+        <WebView
+            Grid.Row="2"
+            x:Name="ReceiveWebView"
+            Navigated="OnMessageReceived"
+            IsVisible="False" />
+
+        <!-- Dots -->
+
+        <HorizontalStackLayout
+            Spacing="20"
+            Grid.Row="0"
+            HorizontalOptions="Center">
+
+            <Ellipse
+                WidthRequest="50"
+                HeightRequest="50"
+                Fill="White"
+                HorizontalOptions="Center" />
+
+        </HorizontalStackLayout>
+
+
+        <!-- Dot Name -->
+        <Entry
+            x:Name="FriendNameEntry"
+            Grid.Row="1"
+            Text="Me"
+            FontSize="25"
+            TextColor="White"
+            HorizontalTextAlignment="Center" />
+        
+        
+        <!-- Chat -->
+
+        <ScrollView
+            x:Name="ChatScrollView"
+            Grid.Row="2">
+
+            <VerticalStackLayout
+                x:Name="ChatStackLayout"
+                Spacing="10"
+                MaximumWidthRequest="500"
+                VerticalOptions="End"/>
+
+        </ScrollView>
+
+        <!-- New Message -->
+
+        <Entry
+            Grid.Row="3"
+            x:Name="MessageEntry"
+            FontSize="25"
+            Text="Message"
+            TextColor="Pink"
+            HeightRequest="50"
+            HorizontalTextAlignment="Center"
+            Completed="OnSendMessage"/>
+
+
+        <!-- My Dot -->
+
+        <Ellipse
+            Grid.Row="4"
+            Fill="Pink"
+            VerticalOptions="Start"
+            WidthRequest="1000"
+            HeightRequest="1000" />
+
+
+        <Label
+            x:Name="NickNameLabel"
+            Grid.Row="4"
+            FontSize="25"
+            Text=""
+            HorizontalOptions="Center"
+            Loaded="OnCheckNickName"/>
+        
+    </Grid>
+
+
+</ContentPage>
